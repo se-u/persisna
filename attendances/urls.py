@@ -8,6 +8,6 @@ urlpatterns = [
     path('', PresenceView.as_view(), name='presence'),
     path('dashboard/', PresenceList.as_view(), name='dashboard'),
     path('search/', SearchPresence.as_view(), name='search-presence'),
-    path('success/', SuccessPresence.as_view(), name='succces-presence'),
+    path('success/', SuccessPresence.as_view(), name='succcess-presence'),
     path('export-presence/',export_presence, name='export' )
 ]
