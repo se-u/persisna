@@ -1,0 +1,78 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+   
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt--8">
+      <div class="row mt-5">
+        <div class="col-xl-12 mb-5 mb-xl-0">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Daftar Hadir</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="{% url 'export' %}" class="btn btn-sm btn-primary">Download</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Kelas</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for siswa in object_list %}
+                  <tr>
+                    <th scope="row">
+                      {{siswa.name}}
+                    </th>
+                    <td>
+                      {{siswa.classroom}}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i> Hadir
+                      </span>
+                    </td>
+                    <td>
+                      <i class="fas fa-calendar text-success mr-3"></i> {{siswa.date}}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+{% endblock content %}
+
