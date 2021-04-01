@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ybkqv2z&7k^ya_b6_!ap%u($8)&wi5rm7%@t0=^(1!oj!83y1h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['persisna.herokuapp.com']
 
