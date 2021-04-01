@@ -25,7 +25,7 @@ SECRET_KEY = 'ybkqv2z&7k^ya_b6_!ap%u($8)&wi5rm7%@t0=^(1!oj!83y1h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['persisna.herokuapp.com']
 
 
 # Application definition
@@ -133,4 +133,4 @@ LOGOUT_REDIRECT_URL = 'login'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Activate Django-Heroku.
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
