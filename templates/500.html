@@ -1,6 +1,6 @@
-{% extends 'layouts/base-fullscreen.html' %}
+{% extends 'layouts/base_full.html' %}
 
-{% block title %} Error 404 {% endblock title %}
+{% block title %} Error 500 {% endblock title %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -19,18 +19,12 @@
               </div>
 
               <div class="text-center mb-4">
-                Server error, please contact support - <a href="/">Home</a>.
+                Sorry Server Kami Sedang ada kendala - <a href="{% url 'presence' %}">Home</a>
               </div>
 
             </div>
           </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="/" class="text-light"><small>Home</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="https://appseed.us/support" class="text-light"><small>Get Support</small></a>
-            </div>
+     
           </div>
         </div>
       </div>
