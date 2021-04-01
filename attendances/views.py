@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
 import csv
 import datetime
@@ -15,7 +15,7 @@ from .models import Presence
 class PresenceView(CreateView):
     form_class = PresenceForm
     template_name = 'attendances/presence_form.html'
-    success_url =  reverse_lazy('presence')
+    success_url =  reverse_lazy('success-presence')
 
 class PresenceList(LoginRequiredMixin, ListView):
     model = Presence
@@ -33,6 +33,10 @@ class SearchPresence(ListView):
             Q(name__icontains=query) | Q(classroom__icontains=query)
         )
         return object_list
+
+class SuccessPresence(TemplateView):
+    template_name = 'success.html'
+    
 
 @login_required
 def export_presence(request):
