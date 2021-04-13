@@ -41,12 +41,12 @@ class SuccessPresence(TemplateView):
 @login_required
 def export_presence(request):
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = f'attachment; filename="daftar-hadir-{now}.csv"'
+    response['Content-Disposition'] = f'attachment; filename="Daftar hadir persisna - {now}.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Name', 'Kelas', 'Ringkasan', 'Tanggal'])
+    writer.writerow(['Name', 'Kelas', 'Tanggal'])
 
-    presences = Presence.objects.all().values_list('name', 'classroom', 'summary', 'date')
+    presences = Presence.objects.all().values_list('name', 'classroom', 'date')
     for presence in presences:
         writer.writerow(presence)
 
