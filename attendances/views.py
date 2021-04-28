@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
 import csv
@@ -12,10 +13,11 @@ from .forms import PresenceForm
 from .models import Presence
 # Create your views here.
 
-class PresenceView(CreateView):
+class PresenceView(SuccessMessageMixin, CreateView):
     form_class = PresenceForm
     template_name = 'attendances/presence_form.html'
-    success_url =  reverse_lazy('success-presence')
+    success_url =  reverse_lazy('presence')
+    success_message = "Anda Berhasil Absen"
 
 class PresenceList(LoginRequiredMixin, ListView):
     model = Presence
@@ -34,9 +36,6 @@ class SearchPresence(ListView):
         )
         return object_list
 
-class SuccessPresence(TemplateView):
-    template_name = 'success.html'
-    
 
 @login_required
 def export_presence(request):
