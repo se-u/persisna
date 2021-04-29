@@ -9,8 +9,8 @@ from django.urls import reverse_lazy
 import csv
 import datetime
 now = datetime.date.today()
-from .forms import PresenceForm
-from .models import Presence
+from .forms import PresenceForm, QuizForm
+from .models import Presence, Quiz
 # Create your views here.
 
 class PresenceView(SuccessMessageMixin, CreateView):
@@ -36,6 +36,11 @@ class SearchPresence(ListView):
         )
         return object_list
 
+class QuizView(SuccessMessageMixin, CreateView):
+    form_class = QuizForm
+    template_name = 'attendances/quiz_form.html'
+    success_url =  reverse_lazy('quiz')
+    success_message = "Jawaban kamu terkirim"
 
 @login_required
 def export_presence(request):
@@ -43,10 +48,28 @@ def export_presence(request):
     response['Content-Disposition'] = f'attachment; filename="Daftar hadir persisna - {now}.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Name', 'Kelas', 'Tanggal'])
+    writer.writerow(['Name', 'Kelas', 'Ringkasan', 'Tanggal'])
 
-    presences = Presence.objects.all().values_list('name', 'classroom', 'date')
+    presences = Presence.objects.all().values_list('name', 'classroom', 'summary', 'date')
     for presence in presences:
         writer.writerow(presence)
 
     return response
+
+@login_required
+def export_quiz(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="Jawaban Quiz - {now}.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Kelas', '1', '2','3', '4', '5'])
+
+    quizes = Quiz.objects.all().values_list('name', 'classroom',
+                                                'question1', 'question2',
+                                                'question3', 'question4',
+                                                'question5')
+    for quiz in quizes:
+        writer.writerow(quiz)
+
+    return response
+

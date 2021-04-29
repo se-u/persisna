@@ -1,0 +1,121 @@
+{% extends 'layouts/base_full.html' %}
+
+{% block title %} Quiz Persisna{% endblock title %}
+{% block header %} Absensi & Quiz Bible talk Persisna {% endblock %}
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+{% block content %}
+
+    <!-- Page content -->
+    <div class="container mt--8 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-transparent pb-5">
+                <div class="card-body px-lg-3 py-lg-3">
+                    
+                <h3 class="text-center mt-2">Quiz Bible Talk</h4>
+                <p class="text-center text-muted">
+                    Quiz berhadiah,hadiah nya gak tau apa, coba tanya pengurus Bible talk
+                </p>
+                {% if messages %}
+                 {% for message in messages %}
+                  <div class="check">
+                    <div {% if message.tags %}class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+                      <i class="far fa-check-circle"></i> {{ message }} 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+
+              <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-user"></i></span>
+                    </div>
+                    {{ form.name }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-graduation-cap"></i></span>
+                    </div>
+                    {{ form.classroom }}
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                    <p class="text-muted quiz">1. Ayat yg menyatakan kasih sebagai dasar persatuan yg disampaikan di video ?</p>
+                    <div class="input-group input-group-alternative mt--2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                      </div>
+                      {{ form.question1 }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="text-muted quiz">2. Apa problem persatuan dari diri sendiri dan dari lingkungan ?</p>
+                    <div class="input-group input-group-alternative mt--2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                      </div>
+                      {{ form.question2 }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="text-muted quiz"> 3. Bagaiamana sudut pandangmu tentang org-org yg hanya mau berteman dengan org yg sepikir dan sehati saja?
+                    </p>
+                        <div class="input-group input-group-alternative mt--2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                      </div>
+                      {{ form.question3 }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="text-muted quiz"> 4. kenapa kita harus menjadi satu/ kenapa kesatuan itu penting?
+                    </p>
+                    <div class="input-group input-group-alternative mt--2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                      </div>
+                      {{ form.question4 }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   <p class="text-muted quiz"> 5. Mengapa persatuan harus dilandasi dengan kasih ?
+                    </p>
+                    <div class="input-group input-group-alternative mt--2">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"></span>
+                      </div>
+                      {{ form.question5 }}
+                    </div>
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-block btn-primary my-4">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
