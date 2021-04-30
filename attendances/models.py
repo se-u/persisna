@@ -55,5 +55,7 @@ class Quiz(models.Model):
     question3 = models.CharField('3', max_length=5000)
     question4 = models.CharField('4', max_length=5000)
     question5 = models.CharField('5', max_length=5000)
-
     date = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name
