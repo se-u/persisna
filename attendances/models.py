@@ -28,6 +28,9 @@ class Presence(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['date']
 
 class Quiz(models.Model):
     CLASSROOM_CHOICES = [
