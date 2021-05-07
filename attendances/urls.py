@@ -6,8 +6,8 @@ from .views import (PresenceView, PresenceList,
 
 
 urlpatterns = [
-    path('presence/', PresenceView.as_view(), name='presence'),
-    path('',QuizView.as_view(), name='quiz'),
+    path('', PresenceView.as_view(), name='presence'),
+    path('quizzz/',QuizView.as_view(), name='quiz'),
     path('dashboard/', PresenceList.as_view(), name='dashboard'),
     path('search/', SearchPresence.as_view(), name='search-presence'),
     path('export-presence/',export_presence, name='export' ),
