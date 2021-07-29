@@ -10,7 +10,7 @@ class PresenceForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nama'})
         self.fields['classroom'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Kelas'})
-        self.fields['summary'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Ringkasan'})
+        self.fields['summary'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Ceritakan "The Beginning" mu...'})
 
 class QuizForm(forms.ModelForm):
     class Meta:
