@@ -6,7 +6,7 @@ from .views import (PresenceView, PresenceList,
 
 
 urlpatterns = [
-    path('klsz', PresenceView.as_view(), name='presence'),
+    path('zkmw', PresenceView.as_view(), name='presence'),
     path('quizzz/',QuizView.as_view(), name='quiz'),
     path('dashboard/', PresenceList.as_view(), name='dashboard'),
     path('search/', SearchPresence.as_view(), name='search-presence'),
